@@ -4,7 +4,57 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+function search(term, showAll = false) {
+	let lower = term.toLowerCase()
+	let matches = []
+	let max = 100
+	for (program of allPrograms) {
+		if (!showAll && matches.length >= max) {
+			break
+		}
+		if (program.name_l.includes(lower) || (program.website && program.website_l.includes(lower))) {
+			matches.push(program)
+		}
+	}
+
+	let rep = escapeHtml(term);
+	let html = `<p>No results found for "${rep}". Need help finding a security contact? Consider the following options:
+	<ul>
+		<li>HackerOne's <a href="https://hackerone.com/disclosure-assistance">Disclosure Assistance</a></li>
+		<li><a href="https://www.kb.cert.org/vuls/report/">US-CERT</a></li>
+	</ul>
+	<p>If you know of a security contact method that isn't on this list, let us know by <a href="https://github.com/cybertransparency/cybertransparency.github.io/issues">making a GitHub pull request</a>.</p></p>`
+
+	if (matches.length > 0) {
+		html = matches.map(program => {
+			let programType = program.bug_bounty ? "Bug Bounty Program" :
+				program.submission_url != "" ? "Vulnerability Disclosure Policy" :
+				"Security Contact Email"
+			let submissionLink = program.submission_url == "" ? program.policy_url :
+				((program.submission_url.includes("@")) ? "mailto:" + program.submission_url : program.submission_url)
+			if (programType == "Security Contact Email") {
+				submissionLink = "mailto:" + program.submission_email
+			}			
+			return `<div>
+				<h3>${program.name}</h3><p>Type: ${programType}</p>`
+				+ (program.policy_url != "" ? `<p>Policy url: <a href="${program.policy_url}">${program.policy_url}</a></p>`
+				: `<p>Contact email: <a href="mailto:${program.submission_email}">${program.submission_email}</a></p>`)
+				+ `<button onclick="window.location = '${submissionLink}'"><a href="${submissionLink}">Submit a Vulnerability</a></button><br><br>`
+			+ `</div>`
+		}).join("<hr>")
+	}
+
+	if (matches.length == 100) {
+		html += `<button onclick='search("${rep}", true)'>Show all results</button>`
+	}
+
+	$("#resultList").html(html)
+}
+
 (function($) {
+
+	search("")
+	$("#contact-count").text(allPrograms.length)
 
 	var	$window = $(window),
 		$body = $('body'),
@@ -256,3 +306,12 @@
 		}
 
 })(jQuery);
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
