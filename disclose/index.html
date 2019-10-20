@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Can I Disclose?</title>
+		<title>Security Contact Search | The Cybersecurity Transparency Project</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -31,17 +31,22 @@
 				<!-- Main -->
 					<div id="main">
 								
-						<p>Are you a security researcher who has discovered a vulnerability and is trying to disclose? Search here for the relevant company or organization to see details on disclosing vulnerabilities. If no contact channel is found, we can provide assistance to help disclose the vulnerability.<br>
+						<p>Are you a security researcher who has discovered a vulnerability and is trying to disclose? Search here for the relevant company or organization to see details on disclosing vulnerabilities.<br><br>
 
-						<!-- Currently, we have <span id="contact-count"></span> security contact methods listed, the largest number of contacts in any aggregated source. </p> -->
+						Disclaimer: This is merely a list of security contacts methods, and does not imply authorization to test. Ensure that you comply with all listed terms of an organization's vulnerability disclosure policy before testing.</p>
 
 						<div class="col-12">
 							<label>Search for an organization/domain name:</label>
-							<input type="text" placeholder="Example Inc" oninput="search(this.value)"></input>
+							<input type="text" placeholder="Example Inc" oninput="search(this.value)"></input><br>
+							<div id="resultList"></div>
 						</div>
 
-						<div id="resultList">
 
+
+						<div>
+						<h5>About</h5>
+						<p>The Cybersecurity Transparency Project aims to improve overall cybersecurity transparency by aggregating organization practices. The Security Contact Search allows researchers to search a list of <span id="contact-count"></span> organizations, the largest such list to date. Data comes from a variety of sources, including <a href="https://github.com/disclose/disclose" target="_blank">disclose.io's program list</a>, <a href="https://hackerone.com/directory" target="_blank">HackerOne's public directory</a>, <a href="https://github.com/GSA/data/tree/master/dotgov-domains" target="_blank">.gov domain security contacts</a>, <a href="https://github.com/cablej/hack-your-government" target="_blank">Hack your Government</a>, and <a href="https://github.com/cablej/hack-your-university" target="_blank">Hack your University</a>.</p>
+						<p><a href="https://github.com/cybertransparency/Security-Contact-List/" target="_blank">View data on GitHub</a></p>
 						</div>
 
 					</div>

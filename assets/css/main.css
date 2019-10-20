@@ -176,7 +176,7 @@ input, select, textarea {
 	}
 
 	p {
-		text-align: justify;
+		/*text-align: justify;*/
 		margin: 0 0 2rem 0;
 	}
 
@@ -299,6 +299,10 @@ input, select, textarea {
 		a:hover {
 			border-bottom-color: transparent;
 			color: #2F4F4F !important;
+		}
+
+		#header a:hover {
+			color:white !important;
 		}
 
 	strong, b {
@@ -3532,8 +3536,8 @@ input, select, textarea {
 		}
 
 			#header a:hover {
-				border-bottom-color: transparent;
-				color: #2F4F4F !important;
+				/*border-bottom-color: transparent;*/
+				/*color: #2F4F4F !important;*/
 			}
 
 		#header strong, #header b {
@@ -3577,8 +3581,8 @@ input, select, textarea {
 		}
 
 			#header .logo:hover {
-				border-color: #2F4F4F !important;
-				color: #2F4F4F !important;
+				/*border-color: #2F4F4F !important;*/
+				/*color: #2F4F4F !important;*/
 			}
 
 		@media screen and (max-width: 980px) {

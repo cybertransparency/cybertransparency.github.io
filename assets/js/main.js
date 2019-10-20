@@ -53,7 +53,7 @@ function search(term, showAll = false) {
 
 (function($) {
 
-	search("")
+	// search("")
 	$("#contact-count").text(allPrograms.length)
 
 	var	$window = $(window),
